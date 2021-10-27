@@ -9,11 +9,9 @@ class CompanySpider(scrapy.Spider):
 
     def __init__(self, chunk=0, *args, **kwargs):
         super(CompanySpider, self).__init__(*args, **kwargs)
-        print(chunk, type(chunk))
-        if type(chunk) != int or chunk > 14: # careful, hardcoded
-            chunk = 0
-        path_to_chunk = './targets/{:02d}.csv'.format(chunk)
-        self.start_urls = ['https://{}/'.format(website) for website in pd.read_csv(path_to_chunk).website.values]
+        path_to_chunk = './targets/{}.csv'.format(chunk)
+        self.start_urls = ['https://{}/'.format(website)
+                           for website in pd.read_csv(path_to_chunk).website.values]
 
     def parse(self, response):
         print(response.url)
