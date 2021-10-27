@@ -12,7 +12,7 @@ BOT_NAME = 'companies'
 SPIDER_MODULES = ['companies.spiders']
 NEWSPIDER_MODULE = 'companies.spiders'
 DOWNLOAD_TIMEOUT= 60
-
+LOG_LEVEL = 'INFO'
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'companies (+http://www.yourdomain.com)'
 

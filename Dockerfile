@@ -9,10 +9,14 @@ COPY requirements.txt .
 # install dependencies
 RUN pip install -r requirements.txt
 
-ADD company_notebook.py .
+ADD scrapy.cfg .
 
-ADD /companies/ .
+ADD gospider.py .
+
+ADD /companies/ ./companies/
 
 ADD /targets/${CHUNK}.csv ./targets/
 
-CMD ['scrapy', 'crawl', 'company', '-o ${CHUNK}.json -L INFO -a chunk=${CHUNK}']
+CMD python gospider.py ${CHUNK}
+
+COPY ./${CHUNK}.json .
